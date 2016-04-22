@@ -1,7 +1,14 @@
 <div class="cont">
 <img class="background-img" src="img/bg1.jpg">
       <div class="login">
-        <h3>Rekisteröidy</h3><br />
+          <h1>MEMOFY</h1>
+          {{#if loginFailed}}
+          <p>
+            Väärä salasana
+          </p>
+          {{else}}
+          <h4>Rekisteröidy</h4>
+          {{/if}}
         <form action="/register" method="post">
             <input class="u-full-width" type="text" placeholder="Käyttäjätunnus" name="username">
             <input class="u-full-width" type="password" placeholder="Salasana" name="password">
