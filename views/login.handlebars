@@ -4,8 +4,8 @@
         <h1>MEMOFY</h1>
         <h4>Kirjaudu sisään</h4>
         <form action="/login" method="post">
-            <input class="u-full-width" type="text" placeholder="Käyttäjätunnus" name="username">
-            <input class="u-full-width" type="password" placeholder="Salasana" name="password">
+            <input class="u-full-width" type="text" placeholder="Käyttäjätunnus" name="username" required>
+            <input class="u-full-width" type="password" placeholder="Salasana" name="password" required>
             {{#if flash}}
             <p class="error">
               {{flash.error}}

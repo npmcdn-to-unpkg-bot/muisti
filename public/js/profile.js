@@ -3,6 +3,12 @@ $(function(){
   //  Alustus
   //****************************************************************************
 
+  //Gridi
+  $('.container').masonry({
+    // options...
+    itemSelector: '.memo',
+    columnWidth: 164
+  });
 
   //****************************************************************************
   //  Eventit
@@ -61,8 +67,19 @@ $(function(){
       }
   });
 
+  $('.container').on('click', '.linkify', function(){
+
+      var lid = $(this).siblings('.lid').text();
+      prompt('Jaa tämä koodi kaverillesi, niin hänkin näkee tämän listan: ', lid);
+  });
+
   $('#btn-test').click(function(){
     sendToServer(getAllListsToObj());
+  });
+
+  $('#btn-add-existing').click(function(){
+    var lid = prompt('Anna lisättävän listan koodi:');
+    addExistingList(lid);
   });
 
   $('#addNewList').click(function(){
@@ -72,6 +89,7 @@ $(function(){
   getListatFromServer(function(res){
     generateLoadedLists(res);
   });
+
 
   //****************************************************************************
   //  Generoi listat
@@ -104,6 +122,7 @@ $(function(){
         $('<p>', {class: 'lid', text: lid}),
         $('<h4>', {class: 'u-pull-left name', text: 'Uusi lista'}),
         $('<i>', { class: 'link trash outline icon' }),
+        $('<i>', { class: 'link linkify icon' }),
         $('<ul>').append(
           $('<li>', {class: 'addnew'}).append(
             $('<i>', {class: 'link large add circle icon'})
@@ -196,6 +215,16 @@ $(function(){
         success: function(result) {
             // Do something with the result
             console.log('postettu');
+        }
+    });
+  }
+
+  function addExistingList(lid){
+    $.ajax({
+        url: '/'+lid,
+        type: 'POST',
+        success: function(result) {
+
         }
     });
   }

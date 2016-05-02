@@ -220,6 +220,22 @@ app.delete('/:id', function(req, res){
   }
 });
 
+app.post('/:id', function(req, res){
+  if (req.user) {
+    console.log(req.user.username + ' lisäsi muistion ' +req.params.id);
+
+    UserListat.findOneAndUpdate(
+      {user: req.user.username},
+      {$push: {listat: req.params.id}},
+      {upsert: false},
+      function(err){
+      }
+    );
+
+    res.send({success: true});
+  }
+});
+
 app.get('/newid', function(req,res){
   res.send({lid: shortid.generate()});
 });

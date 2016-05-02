@@ -1,18 +1,13 @@
+<script src="js/validate.js"></script>
 <div class="cont">
 <img class="background-img" src="img/bg1.jpg">
       <div class="login">
           <h1>MEMOFY</h1>
-          {{#if loginFailed}}
-          <p>
-            Väärä salasana
-          </p>
-          {{else}}
           <h4>Rekisteröidy</h4>
-          {{/if}}
-        <form action="/register" method="post">
-            <input class="u-full-width" type="text" placeholder="Käyttäjätunnus" name="username">
-            <input class="u-full-width" type="password" placeholder="Salasana" name="password">
-            <input class="u-full-width" type="password" placeholder="Toista salasana" name="passwordvalid">
+        <form action="/register/#" method="post" onsubmit="return validate()"><!--<form action="/register" method="post">-->
+            <input class="u-full-width" type="text" placeholder="Käyttäjätunnus" name="username" required>
+            <input class="u-full-width" id="pass1" type="password" placeholder="Salasana" name="password">
+            <input class="u-full-width" id="pass2" type="password" placeholder="Toista salasana" name="passwordvalid">
             <div class="u-full-width">
               <button class="button button-primary u-pull-right">Rekisteröidy</button>
             </div>
