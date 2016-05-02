@@ -1,4 +1,4 @@
-$(function(){
+ $(document).ready(function() {
   //****************************************************************************
   //  Alustus
   //****************************************************************************
@@ -9,6 +9,9 @@ $(function(){
     itemSelector: '.memo',
     columnWidth: 164
   });
+
+
+  $('.tooltip').tooltipster();
 
   //****************************************************************************
   //  Eventit
@@ -29,26 +32,34 @@ $(function(){
 
   $('.container').on('keypress', 'input.item', function(e){
     if (e.keyCode == 13) {
+      sendToServer(getAllListsToObj());
       $(this).blur();
     }
   });
 
   $('.container').on('keypress', 'input.name', function(e){
     if (e.keyCode == 13) {
+      sendToServer(getAllListsToObj());
       $(this).blur();
     }
   });
 
   $('.container').on('focusout', 'input.item', function(){
       clearInputs();
+      sendToServer(getAllListsToObj());
+
   });
 
   $('.container').on('focusout', 'input.name', function(){
       clearInputs();
+      sendToServer(getAllListsToObj());
+
   });
 
   $('.container').on('click', '.remove', function(){
       $(this).closest('li').remove();
+      sendToServer(getAllListsToObj());
+
   });
 
   $('.container').on('click', '.addnew', function() {
@@ -68,7 +79,6 @@ $(function(){
   });
 
   $('.container').on('click', '.linkify', function(){
-
       var lid = $(this).siblings('.lid').text();
       prompt('Anna tämä koodi kaverillesi, jakaaksesi tämän listan: ', lid);
   });
@@ -90,6 +100,11 @@ $(function(){
     generateLoadedLists(res);
   });
 
+  setInterval(function() {
+    console.log('Tallennettu');
+    sendToServer(getAllListsToObj());
+
+}, 2000);
 
   //****************************************************************************
   //  Generoi listat
@@ -188,9 +203,8 @@ $(function(){
   }
 });
 
-
   //****************************************************************************
-  //  API-kutsut (globaaleja, koska siksi)
+  //  API-kutsut (globaaleja)
   //****************************************************************************
 
   function getListatFromServer(callback){
