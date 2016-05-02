@@ -120,18 +120,13 @@ h1 {
     position: absolute;
     top: 5px;
     right: 5px;
-    color: rgb(255, 125, 125);
+    color: rgb(255, 95, 95);
   }
 
   .addnew {
     text-align: center;
   }
 
-  .name {
-    input{
-      font-size: 3.0rem;
-    }
-  }
   ul {
     list-style: none;
     width: 100%;
@@ -139,7 +134,7 @@ h1 {
   }
 
   li {
-    height: 32px;
+    min-height: 32px;
     width: 100%;
     margin-top: 0px;
     margin-bottom: 0px;
@@ -173,6 +168,12 @@ h1 {
     border: 0;
     padding: 0;
     border-radius: 0;
+
+    .name {
+      border-top: 0;
+      font-size: 3.0rem;
+    }
+
   }
   input:hover{
     border: 0;

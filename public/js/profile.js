@@ -70,7 +70,7 @@ $(function(){
   $('.container').on('click', '.linkify', function(){
 
       var lid = $(this).siblings('.lid').text();
-      prompt('Jaa tämä koodi kaverillesi, niin hänkin näkee tämän listan: ', lid);
+      prompt('Jaa tämä koodi kaverillesi, jakaaksesi tämän listan: ', lid);
   });
 
   $('#btn-test').click(function(){

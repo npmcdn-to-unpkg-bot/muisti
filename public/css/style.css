@@ -77,17 +77,15 @@ h1 {
     position: absolute;
     top: 5px;
     right: 5px;
-    color: #ff7d7d; }
+    color: #ff5f5f; }
   .memo .addnew {
     text-align: center; }
-  .memo .name input {
-    font-size: 3.0rem; }
   .memo ul {
     list-style: none;
     width: 100%;
     margin-bottom: .5rem; }
   .memo li, .memo input {
-    height: 32px;
+    min-height: 32px;
     width: 100%;
     margin-top: 0px;
     margin-bottom: 0px;
@@ -114,6 +112,9 @@ h1 {
     border: 0;
     padding: 0;
     border-radius: 0; }
+    .memo input .name {
+      border-top: 0;
+      font-size: 3.0rem; }
   .memo input:hover {
     border: 0; }
   .memo input:focus {
