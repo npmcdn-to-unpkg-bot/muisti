@@ -1,6 +1,6 @@
 module.exports = {
-  cookieSecret    : 'n#3K63H{Ut~;S*kW',
-  sessionSecret   : 'RIPrince',
+  cookieSecret    : <lisää>,
+  sessionSecret   : <lisää>,
 
-  mongoConStr     : 'mongodb://muisti:salasana12@ds013310.mlab.com:13310/muisti'
+  mongoConStr     : <lisää>
 };
