@@ -120,7 +120,7 @@
       $newL.append($('<i>', { class: 'link linkify icon' }));
       $newL.append($('<ul>'));
       for (var j = 0; j < data[i].items.length; j++) {
-        $newL.children('ul').append($('<li>', {class: 'item', text: data[i].items[j]}).append($('<i class="link remove icon"></i>')));
+        $newL.children('ul').append($('<li>', {class: 'item', text: urlify(data[i].items[j])}).append($('<i class="link remove icon"></i>')));
       }
       $newL.children('ul').append($('<li>', {class: 'addnew'}).append(
         $('<i>', {class: 'link large add circle icon'})
@@ -128,6 +128,15 @@
       $('.content').append($newL);
     }
   }
+
+ function urlify(text) {
+    var urlRegex = /(https?:\/\/[^\s]+)/g;
+    return text.replace(urlRegex, function(url) {
+        return '<a href="' + url + '">' + url + '</a>';
+    })
+    // or alternatively
+    // return text.replace(urlRegex, '<a href="$1">$1</a>')
+}
 
   function generateEmptyList(){
     getNewLid(function(lid){
